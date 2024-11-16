@@ -1,12 +1,11 @@
 package com.klef.jfsd.springboot.service;
 
-
 import com.klef.jfsd.springboot.model.Customer;
 
-public interface CustomerService {
+public interface CustomerService 
+{
+	public String signup(Customer c);
 	
-	public String customerRegistration(Customer customer);
-	
-	public Customer checkcustomerlogin(String email,String pwd);
-
+	 Customer login(String username, String password);
 }
+

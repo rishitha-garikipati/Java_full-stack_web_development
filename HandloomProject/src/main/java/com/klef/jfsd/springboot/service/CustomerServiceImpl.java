@@ -1,5 +1,6 @@
 package com.klef.jfsd.springboot.service;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -7,23 +8,27 @@ import com.klef.jfsd.springboot.model.Customer;
 import com.klef.jfsd.springboot.repository.CustomerRepository;
 
 @Service
-public class CustomerServiceImpl implements CustomerService{
-	
+public class CustomerServiceImpl implements CustomerService 
+{
+
 	@Autowired
-	public CustomerRepository customerRepository;
-
+	private CustomerRepository repository;
+	
+	
 	@Override
-	public String customerRegistration(Customer customer) {
-		customerRepository.save(customer);
-		return "Customer Registered Successfully";
+	public String signup(Customer c) {
+		repository.save(c);
+		return "Customer Added Successfully";
 	}
 
+
 	@Override
-	public Customer checkcustomerlogin(String email, String pwd) {
-		return customerRepository.checkcustomerlogin(email,pwd);
-	}
-
+	public Customer login(String username, String password) {
+	        return repository.findById(username)
+	                .filter(c -> c.getPassword().equals(password))
+	                .orElse(null);
+	    }
+	
 	
 
-	
 }

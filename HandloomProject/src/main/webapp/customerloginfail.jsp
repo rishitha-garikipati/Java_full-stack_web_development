@@ -1,4 +1,4 @@
-<%@ taglib uri="jakarta.tags.core" prefix="c"%>
+<%-- <%@ taglib uri="jakarta.tags.core" prefix="c"%>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -12,3 +12,4 @@
 	<a href="customerlogin">Try again</a>
 </body>
 </html>
+ --%>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<%-- <!DOCTYPE html>
 <html>
 <head>
     <title>Registration</title>
@@ -57,4 +57,4 @@
         </form>
     </div>
 </body>
-</html>
+</html> --%>

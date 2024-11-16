@@ -1,4 +1,4 @@
-<%@page import="com.klef.jfsd.springboot.model.Customer"%>
+<%-- <%@page import="com.klef.jfsd.springboot.model.Customer"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
@@ -33,3 +33,4 @@ if(c==null)
 </div>
 </body>
 </html>
+ --%>
