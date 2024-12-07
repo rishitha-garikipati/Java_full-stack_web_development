@@ -21,7 +21,7 @@ export default function Customernavbar() {
         <Link to="/buyproducts">Buy Products</Link>
         <Link to="/artisanprofiles">Artisan Profiles</Link>
         <Link to="/cart">Cart</Link>
-        <Link to="/support">Support</Link>
+        <Link to="/customersupport">Support</Link>
       </div>
       <div className="customer-auth-buttons">
         {username ? (

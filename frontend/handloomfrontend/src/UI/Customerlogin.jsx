@@ -60,7 +60,7 @@ export default function Customerlogin() {
                 </form>
                 {message && <p className="message">{message}</p>}
                 <p className="redirect-message">
-                    Don't have an account? <Link to="/customersignup">Sign up here</Link>
+                    Dont have an account? <Link to="/customersignup">Sign up here</Link>
                 </p>
             </div>
         </div>

@@ -1,69 +1,68 @@
 /* Basic container style */
 .artisan-home-container {
-    font-family: 'Arial', sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #F3D1C1;  /* The specified color */
-    min-height: 100vh;
-    padding: 20px;
-    box-sizing: border-box;
-    margin-left: 284px;
-  }
-  
-  /* Content section */
-  .artisan-home-content {
-    max-width: 1000px;
-    width: 100%;
-    padding: 20px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
-  }
-  
-  /* Title */
-  .artisan-home-title {
-    font-size: 2.5em;
-    font-weight: bold;
-    color: #4B4376; /* Dark color for text */
-    margin-bottom: 20px;
-    text-align: center;
-    text-transform: uppercase;
-  }
-  
-  /* Description text */
-  .artisan-home-description {
-    font-size: 1.2em;
-    color: #4B4376; /* Dark color for text */
-    margin-bottom: 30px;
-    text-align: center;
-  }
-  
-  /* Button styles */
-  .artisan-home-action-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-  }
-  
-  .artisan-home-button {
-    background-color: #4B4376;  /* Dark color for buttons */
-    color: white;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 30px;
-    font-size: 1.1em;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-  }
-  
-  .artisan-home-button:hover {
-    background-color: #3a3560;
-    transform: translateY(-5px);
-  }
-  
-  .artisan-home-button:focus {
-    outline: none;
-  }
-  
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #F3D1C1;  /* The specified color */
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  margin-left: 284px;
+}
+
+/* Content section */
+.artisan-home-content {
+  max-width: 1000px;
+  width: 100%;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+/* Title */
+.artisan-home-title {
+  font-size: 2.5em;
+  font-weight: bold;
+  color: #4B4376; /* Dark color for text */
+  margin-bottom: 20px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* Description text */
+.artisan-home-description {
+  font-size: 1.2em;
+  color: #4B4376; /* Dark color for text */
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* Button styles */
+.artisan-home-action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.artisan-home-button {
+  background-color: #4B4376;  /* Dark color for buttons */
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 30px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.artisan-home-button:hover {
+  background-color: #3a3560;
+  transform: translateY(-5px);
+}
+
+.artisan-home-button:focus {
+  outline: none;
+}

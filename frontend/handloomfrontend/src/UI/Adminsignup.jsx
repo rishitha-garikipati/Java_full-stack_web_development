@@ -1,14 +1,12 @@
 import  { useState } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
-import './ArtisanSignup.css'; // Uncomment and make sure to import the correct CSS
+import './Adminsignup.css'; 
 
-export default function Artisansignup() {
-    const [artisan, setArtisan] = useState({
+export default function Adminsignup() {
+    const [admin, setAdmin] = useState({
         username: "",
-        email: "",
-        password: "",
-        mobile: ""
+        password: ""
     });
 
     const [message, setMessage] = useState("");
@@ -16,7 +14,7 @@ export default function Artisansignup() {
     const navigate = useNavigate();
 
     const handleChange = (e) => {
-        setArtisan({ ...artisan, [e.target.name]: e.target.value });
+        setAdmin({ ...admin, [e.target.name]: e.target.value });
     };
 
     const handleSubmit = async (e) => {
@@ -25,8 +23,8 @@ export default function Artisansignup() {
 
         try {
             const response = await axios.post(
-                "http://localhost:7723/artisan/signup",
-                artisan,
+                "http://localhost:2004/admin/signup",
+                admin,
                 {
                     headers: {
                         "Content-Type": "application/json",
@@ -36,7 +34,7 @@ export default function Artisansignup() {
             );
             if (response.status === 200) {
                 setMessage("Signup successful!");
-                setTimeout(() => navigate('/artisanlogin'), 2000);
+                setTimeout(() => navigate('/adminlogin'), 2000);
             }
         } catch (error) {
             if (error.response) {
@@ -55,25 +53,15 @@ export default function Artisansignup() {
     };
 
     return (
-        <div className="artisanSignup-container">
+        <div className="adminSignup-container">
             <div className="container">
-                <h3>Artisan Signup</h3>
+                <h3>Admin Signup</h3>
                 <form onSubmit={handleSubmit} className="form-container">
                     <label className="label">Username</label>
                     <input
                         type="text"
                         name="username"
-                        value={artisan.username}
-                        onChange={handleChange}
-                        className="input"
-                        required
-                    />
-
-                    <label className="label">Email</label>
-                    <input
-                        type="email"
-                        name="email"
-                        value={artisan.email}
+                        value={admin.username}
                         onChange={handleChange}
                         className="input"
                         required
@@ -83,17 +71,7 @@ export default function Artisansignup() {
                     <input
                         type="password"
                         name="password"
-                        value={artisan.password}
-                        onChange={handleChange}
-                        className="input"
-                        required
-                    />
-
-                    <label className="label">Mobile</label>
-                    <input
-                        type="tel"
-                        name="mobile"
-                        value={artisan.mobile}
+                        value={admin.password}
                         onChange={handleChange}
                         className="input"
                         required
@@ -107,11 +85,9 @@ export default function Artisansignup() {
                             type="reset"
                             className="button clear"
                             onClick={() =>
-                                setArtisan({
+                                setAdmin({
                                     username: "",
-                                    email: "",
-                                    password: "",
-                                    mobile: ""
+                                    password: ""
                                 })
                             }
                         >
@@ -121,7 +97,7 @@ export default function Artisansignup() {
                 </form>
                 {message && <p className="message">{message}</p>}
                 <p className="redirect-message">
-                    Already have an account? <Link to="/artisanlogin">Login here</Link>
+                    Already have an account? <Link to="/adminlogin">Login here</Link>
                 </p>
             </div>
         </div>

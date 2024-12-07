@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import  { useState } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
-import './Artsianlogin.css'; // Make sure to import the correct CSS file
+import './Adminlogin.css'; 
 
-export default function Artsianlogin() {
+export default function Adminlogin() {
     const [credentials, setCredentials] = useState({ username: "", password: "" });
     const [message, setMessage] = useState("");
     const [loading, setLoading] = useState(false);
@@ -15,26 +15,26 @@ export default function Artsianlogin() {
 
     const handleLogin = async (e) => {
         e.preventDefault();
-        setLoading(true); // Set loading to true when logging in
+        setLoading(true); 
 
         try {
-            const response = await axios.post("http://localhost:2004/artsian/login", credentials);
+            const response = await axios.post("http://localhost:2004/admin/login", credentials);
             if (response.status === 200) {
                 setMessage("Login successful!");
-                localStorage.setItem("artisanUsername", credentials.username); // Store artisan username in localStorage
-                navigate('/artsianhome'); // Redirect to artisan home page after login
+                localStorage.setItem("adminUsername", credentials.username); 
+                navigate('/adminhome'); 
             }
         } catch (error) {
             setMessage("Login failed: " + error.message);
         } finally {
-            setLoading(false); // Reset loading state
+            setLoading(false); 
         }
     };
 
     return (
-        <div className="artsianlogin-container">
+        <div className="adminlogin-container">
             <div className="login-container">
-                <h3>Artisan Login</h3>
+                <h3>Admin Login</h3>
                 <form onSubmit={handleLogin} className="form-container">
                     <label className="label">Username</label>
                     <input
@@ -60,7 +60,7 @@ export default function Artsianlogin() {
                 </form>
                 {message && <p className="message">{message}</p>}
                 <p className="redirect-message">
-                    Dont have an account? <Link to="/signup">Sign up here</Link>
+                    Not an admin? <Link to="/adminsignup">Admin Login</Link>
                 </p>
             </div>
         </div>

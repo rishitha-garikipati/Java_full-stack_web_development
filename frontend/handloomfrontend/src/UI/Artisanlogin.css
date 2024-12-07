@@ -1,5 +1,5 @@
 /* Full page styling with centered form */
-.artisanlogin-container {
+.artsianlogin-container {
     font-family: Arial, sans-serif;
     background: url('../assets/signup-bg.jpg') no-repeat center center/cover; /* Replace with your image path */
     margin: 0;
@@ -14,7 +14,7 @@
 }
 
 /* Background overlay for shading */
-.artisanlogin-container::before {
+.artsianlogin-container::before {
     content: '';
     position: absolute;
     top: 0;

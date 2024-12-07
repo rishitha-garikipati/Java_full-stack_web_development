@@ -1,8 +1,8 @@
 import  { useEffect, useState } from 'react';
-import './Artsiannavbar.css';  // Importing the artisan navbar CSS
+import './Adminnavbar.css';  // Importing the artisan navbar CSS
 import { Link } from 'react-router-dom';
 
-export default function Artisannavbar() {
+export default function Adminnavbar() {
   const [username, setUsername] = useState("");
 
   // Retrieve the username from localStorage when the component mounts
@@ -14,23 +14,22 @@ export default function Artisannavbar() {
   }, []);
 
   return (
-    <div className="artisan-navbar-container">
-      <div className="artisan-project-name">Handloom Fashion</div>
-      <div className="artisan-nav-links">
-        <Link to="/artsianhome">Home</Link>
-        <Link to="/addproducts">Add Products</Link>
-        <Link to="/viewproducts">View Products</Link>
-        <Link to="/editproducts">Update Products</Link>
-        <Link to="/support">Support</Link>
+    <div className="admin-navbar-container">
+      <div className="admin-project-name">Handloom Fashion</div>
+      <div className="admin-nav-links">
+        <Link to="/adminhome">Home</Link>
+        <Link to="/viewcustomers">View Customer details</Link>
+        <Link to="/viewartisan">View artisan details</Link>
+        <Link to="/aboutus">Aboutus</Link>
       </div>
-      <div className="artisan-auth-buttons">
+      <div className="admin-auth-buttons">
         {username ? (
           <span className="username-display">Welcome, {username}</span>
         ) : (
           <span className="username-display">Welcome, Guest</span>
         )}
         <Link to="/profile">
-          <button className="artisan-userprofile-btn">User Profile</button>
+          <button className="admin-userprofile-btn">User Profile</button>
         </Link>
       </div>
     </div>

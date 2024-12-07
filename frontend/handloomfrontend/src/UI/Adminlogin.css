@@ -1,5 +1,5 @@
 /* Full page styling with centered form */
-.artsianSignup-container {
+.adminlogin-container {
     font-family: Arial, sans-serif;
     background: url('../assets/signup-bg.jpg') no-repeat center center/cover; /* Replace with your image path */
     margin: 0;
@@ -14,7 +14,7 @@
 }
 
 /* Background overlay for shading */
-.artsianSignup-container::before {
+.adminlogin-container::before {
     content: '';
     position: absolute;
     top: 0;
@@ -25,9 +25,9 @@
     z-index: 0;
 }
 
-/* Signup form container */
-.container {
-    background-color: #FFD7C4; /* Primary background color for the form */
+/* Login form container */
+.login-container {
+    background-color: #F3D1C1; /* Soft color for artisan login */
     border-radius: 15px;
     padding: 40px;
     width: 400px;
@@ -94,10 +94,6 @@ h3 {
     transition: all 0.3s ease-in-out;
 }
 
-.button.clear {
-    background-color: #FF6F61; /* Clear button with a distinct color */
-}
-
 .button:hover {
     background-color: #A2D2DF; /* Hover effect */
 }
@@ -110,9 +106,16 @@ h3 {
     margin-top: 20px;
 }
 
+/* Redirect message */
+.redirect-message {
+    margin-top: 20px;
+    font-size: 1rem;
+    color: #333;
+}
+
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
-    .container {
+    .login-container {
         width: 90%;
         padding: 30px;
     }

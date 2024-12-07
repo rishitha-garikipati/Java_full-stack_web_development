@@ -1,11 +1,27 @@
-import { BrowserRouter, Route, Routes} from 'react-router-dom';
+import React, { useState } from 'react';
+import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import Mainhome from './UI/Mainhome';
 import Customersignup from './UI/Customersignup';
 import Customerlogin from './UI/Customerlogin';
 import Customerhome from './UI/Customerhome';
-import Artisansignup from './UI/Artisansignup';  // Corrected spelling
-import Artisanlogin from './UI/Artisanlogin';    // Corrected spelling
-import Artisanhome from './UI/Artisanhome';      // Corrected spelling
+import Artisansignup from './UI/Artsiansignup';
+import Artsianlogin from './UI/Artsianlogin';
+import Artsianhome from './UI/Artsianhome';
+import Adminsignup from './UI/Adminsignup';
+import Adminlogin from './UI/Adminlogin';
+import Adminhome from './UI/Adminhome';
+import Addproducts from './UI/Addproducts';
+import Viewproducts from './UI/Viewproducts';
+import Editproducts from './UI/Editproducts';
+import Buyproducts from './UI/Buyproducts';
+import Addcart from './UI/Addcart';
+import { CartProvider } from './UI/CartContext';
+import Editartisan from './UI/Editartisan';
+import Editcustomer from './UI/Editcustomer';
+import AboutUs from './UI/Aboutus';
+import Support from './UI/Support';
+import Customersupport from './UI/Customersupport';
+
 
 function App() {
 
@@ -13,21 +29,33 @@ function App() {
 
   return (
     <div>
+      <CartProvider>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Mainhome />} />
           <Route path="/customersignup" element={<Customersignup />} />
           <Route path="/customerlogin" element={<Customerlogin />} />
-          <Route path="/buyproducts" element={<div>Buy Products Page</div>} />
+          <Route path="/buyproducts" element={<Buyproducts/>} />
           <Route path="/artisanprofiles" element={<div>Artisan Profiles Page</div>} />
-          <Route path="/aboutus" element={<div>About Us Page</div>} />
-          <Route path="/cart" element={<div>Cart Page</div>} />
-          <Route path="/signup" element={<Artisansignup />} />  {/* Corrected spelling */}
-          <Route path="/customerhome" element={<Customerhome />} />
-          <Route path="/artisanlogin" element={<Artisanlogin />} />  {/* Corrected spelling */}
-          <Route path="/artisanhome" element={<Artisanhome />} />    {/* Corrected spelling */}
+          <Route path="/support" element={<Support/>} />
+          <Route path="/cart" element={<Addcart/>} />
+          <Route path="/artisansignup" element={<Artisansignup/>} />
+          <Route path="/customerhome" element={<Customerhome />}/>
+          <Route path="/artsianlogin" element={<Artsianlogin/>}/>
+          <Route path="/artsianhome" element={<Artsianhome/>}/>
+          <Route path="/adminsignup" element={<Adminsignup/>}/>
+          <Route path="/adminlogin" element={<Adminlogin/>}/>
+          <Route path="/adminhome" element={<Adminhome/>}/>
+          <Route path="/addproducts" element={<Addproducts/>}/>
+          <Route path="/viewproducts" element={<Viewproducts/>}/>
+          <Route path="/editproducts" element={<Editproducts/>}/>
+          <Route path="/viewartisan" element={<Editartisan/>}/>
+          <Route path="/viewcustomers" element={<Editcustomer/>}/>
+          <Route path="/aboutus" element={<AboutUs/>}/>
+          <Route path="/customersupport" element={<Customersupport/>}/>
         </Routes>
       </BrowserRouter>
+      </CartProvider>
     </div>
   );
 }
