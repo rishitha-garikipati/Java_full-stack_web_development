@@ -14,7 +14,7 @@
 }
 
 /* Background overlay for shading */
-.artsianlogin-container::before {
+.artisanlogin-container::before {
     content: '';
     position: absolute;
     top: 0;

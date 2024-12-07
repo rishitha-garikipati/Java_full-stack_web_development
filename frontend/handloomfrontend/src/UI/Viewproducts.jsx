@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import axios from 'axios';
 import './Viewproducts.css';
-import Artisannavbar from './Artsiannavbar';
+import Artisannavbar from './Artisannavbar';
 
 export default function Viewproducts() {
   const [products, setProducts] = useState([]);
@@ -9,7 +9,7 @@ export default function Viewproducts() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('http://localhost:2004/product/view'); // Adjust endpoint if needed
+        const response = await axios.get('http://localhost:7723/product/view'); // Adjust endpoint if needed
         setProducts(response.data); // Assuming response.data is an array of products
       } catch (error) {
         console.error('Error fetching products:', error);

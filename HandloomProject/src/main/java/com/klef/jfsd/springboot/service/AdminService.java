@@ -4,5 +4,8 @@ import com.klef.jfsd.springboot.model.Admin;
 
 public interface AdminService 
 {
- public Admin checkadminlogin(String uname , String upassword);
+
+public String signup (Admin a);
+	
+	Admin login(String username , String password);
 }

@@ -1,5 +1,5 @@
 import  { useEffect, useState } from 'react';
-import './Artsiannavbar.css';  // Importing the artisan navbar CSS
+import './Artisannavbar.css';  // Importing the artisan navbar CSS
 import { Link } from 'react-router-dom';
 
 export default function Artisannavbar() {
@@ -17,7 +17,7 @@ export default function Artisannavbar() {
     <div className="artisan-navbar-container">
       <div className="artisan-project-name">Handloom Fashion</div>
       <div className="artisan-nav-links">
-        <Link to="/artsianhome">Home</Link>
+        <Link to="/artisanhome">Home</Link>
         <Link to="/addproducts">Add Products</Link>
         <Link to="/viewproducts">View Products</Link>
         <Link to="/editproducts">Update Products</Link>

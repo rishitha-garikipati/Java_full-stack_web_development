@@ -11,12 +11,20 @@ public class AdminServiceImpl implements AdminService
 {
 
 	@Autowired
-	public AdminRepository adminrepository;
+	public AdminRepository repository;
+
 	@Override
-	public Admin checkadminlogin(String uname, String upassword) 
-	{
-		
-		return adminrepository.checkadminlogin(uname , upassword);
+	public String signup(Admin a) {
+		repository.save(a);
+		return "Admin Added Successfully";
 	}
+
+	@Override
+	public Admin login(String username, String password) {
+		return repository.findById(username)
+				.filter(a -> a.getPassword().equals(password))
+                .orElse(null);
+	}
+	
 
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useCart } from './CartContext';
 import './Buyproducts.css';
@@ -11,7 +11,7 @@ export default function Buyproducts() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('http://localhost:2004/product/view');
+        const response = await axios.get('http://localhost:7723/product/view');
         setProducts(response.data);
       } catch (error) {
         console.error('Error fetching products:', error);

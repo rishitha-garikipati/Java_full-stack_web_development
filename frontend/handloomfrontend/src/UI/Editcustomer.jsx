@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Editcustomer.css';
 import Adminnavbar from './Adminnavbar';
@@ -16,7 +16,7 @@ export default function Editcustomer() {
   useEffect(() => {
     const fetchCustomers = async () => {
       try {
-        const response = await axios.get('http://localhost:2004/customer/view'); // Update with correct endpoint
+        const response = await axios.get('http://localhost:7723/customer/view'); // Update with correct endpoint
         setCustomers(response.data);
       } catch (error) {
         console.error('Error fetching customers:', error);
@@ -39,7 +39,7 @@ export default function Editcustomer() {
   const handleUpdate = async () => {
     try {
       const response = await axios.put(
-        `http://localhost:2004/customer/update/${selectedCustomer.username}`,
+        `http://localhost:7723/customer/update/${selectedCustomer.username}`,
         updatedCustomer
       );
       alert(response.data);
@@ -59,7 +59,7 @@ export default function Editcustomer() {
 
   const handleDelete = async (username) => {
     try {
-      const response = await axios.delete(`http://localhost:2004/customer/delete/${username}`);
+      const response = await axios.delete(`http://localhost:7723/customer/delete/${username}`);
       alert(response.data);
       window.location.reload(); // Reload the page to reflect the deletion
     } catch (error) {

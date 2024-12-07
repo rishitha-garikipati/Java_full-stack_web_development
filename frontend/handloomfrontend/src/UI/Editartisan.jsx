@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import axios from 'axios';
 import './EditArtisan.css';
 import Adminnavbar from './Adminnavbar';
@@ -15,7 +15,7 @@ export default function Editartisan() {
   useEffect(() => {
     const fetchArtisans = async () => {
       try {
-        const response = await axios.get('http://localhost:2004/artsian/view'); // Update with correct endpoint
+        const response = await axios.get('http://localhost:7723/artisan/view'); // Update with correct endpoint
         setArtisans(response.data);
       } catch (error) {
         console.error('Error fetching artisans:', error);
@@ -38,7 +38,7 @@ export default function Editartisan() {
   const handleUpdate = async () => {
     try {
       const response = await axios.put(
-        `http://localhost:2004/artsian/update/${selectedArtisan.username}`,
+        `http://localhost:7723/artisan/update/${selectedArtisan.username}`,
         updatedArtisan
       );
       alert(response.data);
@@ -58,7 +58,7 @@ export default function Editartisan() {
 
   const handleDelete = async (username) => {
     try {
-      const response = await axios.delete(`http://localhost:2004/artsian/delete/${username}`);
+      const response = await axios.delete(`http://localhost:7723/artisan/delete/${username}`);
       alert(response.data);
       window.location.reload(); // Reload the page to reflect the deletion
     } catch (error) {

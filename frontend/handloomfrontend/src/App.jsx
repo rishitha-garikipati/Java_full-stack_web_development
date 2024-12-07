@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
-import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
+import { BrowserRouter, Route, Routes,  } from 'react-router-dom';
 import Mainhome from './UI/Mainhome';
 import Customersignup from './UI/Customersignup';
 import Customerlogin from './UI/Customerlogin';
 import Customerhome from './UI/Customerhome';
-import Artisansignup from './UI/Artsiansignup';
-import Artsianlogin from './UI/Artsianlogin';
-import Artsianhome from './UI/Artsianhome';
+import Artisansignup from './UI/Artisansignup';
+import Artisanlogin from './UI/Artisanlogin';
+import Artisanhome from './UI/Artisanhome';
 import Adminsignup from './UI/Adminsignup';
 import Adminlogin from './UI/Adminlogin';
 import Adminhome from './UI/Adminhome';
@@ -41,8 +40,8 @@ function App() {
           <Route path="/cart" element={<Addcart/>} />
           <Route path="/artisansignup" element={<Artisansignup/>} />
           <Route path="/customerhome" element={<Customerhome />}/>
-          <Route path="/artsianlogin" element={<Artsianlogin/>}/>
-          <Route path="/artsianhome" element={<Artsianhome/>}/>
+          <Route path="/artisanlogin" element={<Artisanlogin/>}/>
+          <Route path="/artisanhome" element={<Artisanhome/>}/>
           <Route path="/adminsignup" element={<Adminsignup/>}/>
           <Route path="/adminlogin" element={<Adminlogin/>}/>
           <Route path="/adminhome" element={<Adminhome/>}/>

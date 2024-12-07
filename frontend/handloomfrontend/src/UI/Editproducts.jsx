@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Editproducts.css';
-import Artisannavbar from './Artsiannavbar';
+import Artisannavbar from './Artisannavbar';
 
 export default function Editproducts() {
   const [products, setProducts] = useState([]);
@@ -17,7 +17,7 @@ export default function Editproducts() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('http://localhost:2004/product/view');
+        const response = await axios.get('http://localhost:7723/product/view');
         setProducts(response.data);
       } catch (error) {
         console.error('Error fetching products:', error);
@@ -41,7 +41,7 @@ export default function Editproducts() {
   const handleUpdate = async () => {
     try {
       const response = await axios.put(
-        `http://localhost:2004/product/update/${selectedProduct.id}`,
+        `http://localhost:7723/product/update/${selectedProduct.id}`,
         updatedProduct
       );
       alert(response.data);
@@ -62,7 +62,7 @@ export default function Editproducts() {
 
   const handleDelete = async (id) => {
     try {
-      const response = await axios.delete(`http://localhost:2004/product/delete/${id}`);
+      const response = await axios.delete(`http://localhost:7723/product/delete/${id}`);
       alert(response.data);
       window.location.reload(); // Reload the page to reflect the deletion
     } catch (error) {

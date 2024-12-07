@@ -1,59 +1,35 @@
 package com.klef.jfsd.springboot.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.ModelAndView;
-import com.klef.jfsd.springboot.service.AdminService;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.klef.jfsd.springboot.model.Admin;
+import com.klef.jfsd.springboot.model.Artisan;
+import com.klef.jfsd.springboot.service.AdminService;
 
-import jakarta.servlet.http.HttpServletRequest;
 
-@Controller
+@RestController
+@RequestMapping("admin")
+
 public class AdminController 
 
 {
 	@Autowired
-	public AdminService adminService;
+	public AdminService service;
 	
-	
-	 @GetMapping("/")
-	 public ModelAndView home()
-	 {
-	  ModelAndView mv = new ModelAndView();
-	  mv.setViewName("home");
-	  return mv;
-	 }
-	
-	@GetMapping("adminlogin")
-	public ModelAndView adminlogin()
+	@PostMapping("signup")
+	public String signup(@RequestBody Admin a) 
 	{
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("adminlogin");
-		return mv;
+	return service.signup(a);	
 	}
 	
 	
-   @PostMapping("checkadminlogin")
-   public ModelAndView checkadminlogin (HttpServletRequest request)
-   {
-	    ModelAndView mv = new ModelAndView();
-	    
-	    String uname = request.getParameter("auname");
-	    String password = request.getParameter("apwd");
-	    
-	    Admin admin = adminService.checkadminlogin(uname , password);
-	    
-	    if(admin!=null) 
-	    {
-	      mv.setViewName("adminhome");	
-	    }
-	    else 
-	    {
-	    	mv.setViewName("adminloginfail");
-	    	mv.addObject("message","Login failed");
-	    }
-	    return mv;
-   }
+	@PostMapping("login")
+	public String login(@RequestBody Admin a) {
+		Admin admin = service.login(a.getUsername(), a.getPassword());
+		return admin != null ? "Login Successful" : "Invalid Credentials";
+	}
 }

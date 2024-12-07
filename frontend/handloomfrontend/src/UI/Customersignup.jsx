@@ -24,7 +24,7 @@ export default function Customersignup() {
         setLoading(true); // Set loading to true when submitting
 
         try {
-            const response = await axios.post("http://localhost:2004/customer/signup", customer);
+            const response = await axios.post("http://localhost:7723/customer/signup", customer);
             if (response.status === 200) {
                 setMessage("Signup successful!");
                 setTimeout(() => navigate('/customerlogin'), 2000);

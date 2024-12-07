@@ -1,4 +1,3 @@
-import React from 'react'
 import Customernavbar from './Customernavbar';
 
 export default function Customersupport() {

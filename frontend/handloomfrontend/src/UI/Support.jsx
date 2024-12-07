@@ -1,4 +1,3 @@
-import React from 'react';
 import Mainnavbar from './Mainnavbar';
 import './support.css'; // Import the CSS file
 

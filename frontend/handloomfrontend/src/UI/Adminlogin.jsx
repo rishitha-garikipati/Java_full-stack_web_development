@@ -18,7 +18,7 @@ export default function Adminlogin() {
         setLoading(true); 
 
         try {
-            const response = await axios.post("http://localhost:2004/admin/login", credentials);
+            const response = await axios.post("http://localhost:7723/admin/login", credentials);
             if (response.status === 200) {
                 setMessage("Login successful!");
                 localStorage.setItem("adminUsername", credentials.username); 

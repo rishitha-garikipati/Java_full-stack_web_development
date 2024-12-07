@@ -1,6 +1,6 @@
 import  { useState, useEffect } from 'react';
-import Artisannavbar from './Artsiannavbar';
-import './Artsianhome.css';  // Create a separate CSS file for ArtisanHome
+import Artisannavbar from './Artisannavbar';
+import './Artisanhome.css';  // Create a separate CSS file for ArtisanHome
 
 export default function Artisanhome() {
   const [username, setUsername] = useState("");

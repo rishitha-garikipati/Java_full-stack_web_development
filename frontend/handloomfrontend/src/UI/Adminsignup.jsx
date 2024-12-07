@@ -23,7 +23,7 @@ export default function Adminsignup() {
 
         try {
             const response = await axios.post(
-                "http://localhost:2004/admin/signup",
+                "http://localhost:7723/admin/signup",
                 admin,
                 {
                     headers: {

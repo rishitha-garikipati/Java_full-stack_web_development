@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
-import './Artsianlogin.css'; // Make sure to import the correct CSS file
+import './Artisanlogin.css'; // Make sure to import the correct CSS file
 
-export default function Artsianlogin() {
+export default function Artisanlogin() {
     const [credentials, setCredentials] = useState({ username: "", password: "" });
     const [message, setMessage] = useState("");
     const [loading, setLoading] = useState(false);
@@ -18,11 +18,11 @@ export default function Artsianlogin() {
         setLoading(true); // Set loading to true when logging in
 
         try {
-            const response = await axios.post("http://localhost:2004/artsian/login", credentials);
+            const response = await axios.post("http://localhost:7723/artisan/login", credentials);
             if (response.status === 200) {
                 setMessage("Login successful!");
                 localStorage.setItem("artisanUsername", credentials.username); // Store artisan username in localStorage
-                navigate('/artsianhome'); // Redirect to artisan home page after login
+                navigate('/artisanhome'); // Redirect to artisan home page after login
             }
         } catch (error) {
             setMessage("Login failed: " + error.message);
@@ -32,7 +32,7 @@ export default function Artsianlogin() {
     };
 
     return (
-        <div className="artsianlogin-container">
+        <div className="artisanlogin-container">
             <div className="login-container">
                 <h3>Artisan Login</h3>
                 <form onSubmit={handleLogin} className="form-container">

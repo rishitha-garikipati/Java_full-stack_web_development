@@ -1,7 +1,7 @@
 import  { useState } from 'react';
 import axios from 'axios';
 import './Addproducts.css';
-import Artisannavbar from './Artsiannavbar';
+import Artisannavbar from './Artisannavbar';
 
 export default function Addproducts() {
   const [product, setProduct] = useState({
@@ -20,7 +20,7 @@ export default function Addproducts() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:2004/product/add', product);
+      const response = await axios.post('http://localhost:7723/product/add', product);
       alert(response.data); // Success message from backend
       setProduct({ name: '', cost: '', rating: '', features: '', imageUrl: '' }); // Reset form
     } catch (error) {

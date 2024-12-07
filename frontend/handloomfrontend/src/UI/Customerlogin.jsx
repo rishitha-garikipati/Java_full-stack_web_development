@@ -18,7 +18,7 @@ export default function Customerlogin() {
         setLoading(true); // Set loading to true when logging in
 
         try {
-            const response = await axios.post("http://localhost:2004/customer/login", credentials);
+            const response = await axios.post("http://localhost:7723/customer/login", credentials);
             if (response.status === 200) {
                 setMessage("Login successful!");
                 localStorage.setItem("username", credentials.username);  // Store username in localStorage
