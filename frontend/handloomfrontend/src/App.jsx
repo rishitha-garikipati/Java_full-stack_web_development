@@ -1,4 +1,5 @@
-import { BrowserRouter, Route, Routes,  } from 'react-router-dom';
+import React, { useState } from 'react';
+import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import Mainhome from './UI/Mainhome';
 import Customersignup from './UI/Customersignup';
 import Customerlogin from './UI/Customerlogin';
@@ -20,6 +21,11 @@ import Editcustomer from './UI/Editcustomer';
 import AboutUs from './UI/Aboutus';
 import Support from './UI/Support';
 import Customersupport from './UI/Customersupport';
+import Artisansupport from './UI/Artisansupport';
+import Artisanprofiles from './UI/Artisanprofiles';
+import PaymentPage from './UI/PaymentPage';
+import OrdersPage from './UI/OrdersPage';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 
 function App() {
@@ -35,7 +41,7 @@ function App() {
           <Route path="/customersignup" element={<Customersignup />} />
           <Route path="/customerlogin" element={<Customerlogin />} />
           <Route path="/buyproducts" element={<Buyproducts/>} />
-          <Route path="/artisanprofiles" element={<div>Artisan Profiles Page</div>} />
+          <Route path="/artisanprofiles" element={<Artisanprofiles/>}/>
           <Route path="/support" element={<Support/>} />
           <Route path="/cart" element={<Addcart/>} />
           <Route path="/artisansignup" element={<Artisansignup/>} />
@@ -52,6 +58,9 @@ function App() {
           <Route path="/viewcustomers" element={<Editcustomer/>}/>
           <Route path="/aboutus" element={<AboutUs/>}/>
           <Route path="/customersupport" element={<Customersupport/>}/>
+          <Route path="/artisansupport" element={<Artisansupport/>}/>
+          <Route path="/payment" element={<PaymentPage/>}/>
+          <Route path="/myorders" element={<OrdersPage/>}/>
         </Routes>
       </BrowserRouter>
       </CartProvider>

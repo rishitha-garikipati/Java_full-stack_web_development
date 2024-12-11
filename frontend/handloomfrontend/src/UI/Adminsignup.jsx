@@ -1,6 +1,8 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; // Make sure this import is added
 import './Adminsignup.css'; 
 
 export default function Adminsignup() {
@@ -9,17 +11,35 @@ export default function Adminsignup() {
         password: ""
     });
 
-    const [message, setMessage] = useState("");
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
+    // Handle input changes
     const handleChange = (e) => {
         setAdmin({ ...admin, [e.target.name]: e.target.value });
     };
 
+    // Validation functions
+    const validateUsername = (username) => /^[a-zA-Z0-9]{6,}$/.test(username); // at least 6 characters
+    const validatePassword = (password) =>
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/.test(password); // 8 characters, 1 uppercase, 1 number, 1 special character
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
+
+        // Perform validations
+        if (!validateUsername(admin.username)) {
+            toast.error("Username must be at least 6 characters long and can only contain letters and numbers.");
+            setLoading(false);
+            return;
+        }
+
+        if (!validatePassword(admin.password)) {
+            toast.error("Password must be at least 8 characters long, contain 1 uppercase letter, 1 number, and 1 special character.");
+            setLoading(false);
+            return;
+        }
 
         try {
             const response = await axios.post(
@@ -33,19 +53,19 @@ export default function Adminsignup() {
                 }
             );
             if (response.status === 200) {
-                setMessage("Signup successful!");
+                toast.success("Signup successful! Redirecting to login...");
                 setTimeout(() => navigate('/adminlogin'), 2000);
             }
         } catch (error) {
             if (error.response) {
                 console.error("Response Error:", error.response.data);
-                setMessage("Signup failed: " + error.response.data.message);
+                toast.error("Signup failed: " + error.response.data.message);
             } else if (error.request) {
                 console.error("Request Error:", error.request);
-                setMessage("Signup failed: No response from server.");
+                toast.error("Signup failed: No response from server.");
             } else {
                 console.error("Error:", error.message);
-                setMessage("Signup failed: " + error.message);
+                toast.error("Signup failed: " + error.message);
             }
         } finally {
             setLoading(false);
@@ -95,11 +115,11 @@ export default function Adminsignup() {
                         </button>
                     </div>
                 </form>
-                {message && <p className="message">{message}</p>}
                 <p className="redirect-message">
                     Already have an account? <Link to="/adminlogin">Login here</Link>
                 </p>
             </div>
+            <ToastContainer /> {/* Make sure ToastContainer is included */}
         </div>
     );
 }

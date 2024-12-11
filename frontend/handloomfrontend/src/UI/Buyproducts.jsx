@@ -1,8 +1,10 @@
-import { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useCart } from './CartContext';
 import './Buyproducts.css';
 import Customernavbar from './Customernavbar';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Buyproducts() {
   const [products, setProducts] = useState([]);
@@ -21,6 +23,12 @@ export default function Buyproducts() {
 
     fetchProducts();
   }, []);
+
+  // Handle Add to Cart and show toast
+  const handleAddToCart = (product) => {
+    addToCart(product);
+    toast.success(`${product.name} added to cart successfully!`);
+  };
 
   return (
     <div>
@@ -48,7 +56,7 @@ export default function Buyproducts() {
                   </div>
                   <button
                     className="add-to-cart-btn"
-                    onClick={() => addToCart(product)}
+                    onClick={() => handleAddToCart(product)} // Add product to cart and show toast
                   >
                     Add to Cart
                   </button>
@@ -60,6 +68,7 @@ export default function Buyproducts() {
           </div>
         </div>
       </div>
+      <ToastContainer /> {/* Display toast notifications */}
     </div>
   );
 }

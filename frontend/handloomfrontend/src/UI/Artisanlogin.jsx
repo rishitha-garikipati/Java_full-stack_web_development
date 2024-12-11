@@ -1,33 +1,55 @@
-import { useState } from 'react';
+import  { useState } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
-import './Artisanlogin.css'; // Make sure to import the correct CSS file
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; // Ensure this import is included
+import './Artisanlogin.css';
 
 export default function Artisanlogin() {
     const [credentials, setCredentials] = useState({ username: "", password: "" });
-    const [message, setMessage] = useState("");
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
+    // Handle input changes
     const handleChange = (e) => {
         setCredentials({ ...credentials, [e.target.name]: e.target.value });
     };
 
+    // Validate username (at least 6 characters long)
+    const validateUsername = (username) => /^[a-zA-Z0-9]{6,}$/.test(username);
+
+    // Validate password (minimum 8 characters, including uppercase, number, and special character)
+    const validatePassword = (password) =>
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/.test(password);
+
     const handleLogin = async (e) => {
         e.preventDefault();
-        setLoading(true); // Set loading to true when logging in
+        setLoading(true);
+
+        // Validation checks
+        if (!validateUsername(credentials.username)) {
+            toast.error("Username must be at least 6 characters long and contain only letters and numbers.");
+            setLoading(false);
+            return;
+        }
+
+        if (!validatePassword(credentials.password)) {
+            toast.error("Password must be at least 8 characters long, with 1 uppercase letter, 1 number, and 1 special character.");
+            setLoading(false);
+            return;
+        }
 
         try {
             const response = await axios.post("http://localhost:7723/artisan/login", credentials);
             if (response.status === 200) {
-                setMessage("Login successful!");
-                localStorage.setItem("artisanUsername", credentials.username); // Store artisan username in localStorage
-                navigate('/artisanhome'); // Redirect to artisan home page after login
+                toast.success("Login successful!");
+                localStorage.setItem("artisanUsername", credentials.username);
+                setTimeout(() => navigate('/artisanhome'), 2000); // Redirect to artisan home page after successful login
             }
         } catch (error) {
-            setMessage("Login failed: " + error.message);
+            toast.error("Login failed: " + (error.response?.data?.message || error.message));
         } finally {
-            setLoading(false); // Reset loading state
+            setLoading(false);
         }
     };
 
@@ -58,10 +80,10 @@ export default function Artisanlogin() {
                         {loading ? 'Logging in...' : 'Login'}
                     </button>
                 </form>
-                {message && <p className="message">{message}</p>}
                 <p className="redirect-message">
-                    Dont have an account? <Link to="/signup">Sign up here</Link>
+                    Dont have an account? <Link to="/artisanSignup">Sign up here</Link>
                 </p>
+                <ToastContainer /> {/* Ensure ToastContainer is included to show toasts */}
             </div>
         </div>
     );

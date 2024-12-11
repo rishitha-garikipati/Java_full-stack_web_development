@@ -1,11 +1,12 @@
 import  { useState } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './Customerlogin.css';
 
 export default function Customerlogin() {
     const [credentials, setCredentials] = useState({ username: "", password: "" });
-    const [message, setMessage] = useState("");
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
@@ -15,21 +16,26 @@ export default function Customerlogin() {
 
     const handleLogin = async (e) => {
         e.preventDefault();
-        setLoading(true); // Set loading to true when logging in
-
+        setLoading(true);
+    
         try {
             const response = await axios.post("http://localhost:7723/customer/login", credentials);
             if (response.status === 200) {
-                setMessage("Login successful!");
-                localStorage.setItem("username", credentials.username);  // Store username in localStorage
-                navigate('/customerhome'); // Redirect to home page after login
+                toast.success("Login successful!");
+                localStorage.setItem("username", credentials.username);
+                setTimeout(() => navigate('/customerhome'), 2000);
             }
         } catch (error) {
-            setMessage("Login failed: " + error.message);
+            if (error.response && error.response.status === 401) {
+                toast.error("Invalid username or password.");
+            } else {
+                toast.error("Login failed: " + error.message);
+            }
         } finally {
-            setLoading(false); // Reset loading state
+            setLoading(false);
         }
     };
+    
 
     return (
         <div className="customerlogin-container">
@@ -58,7 +64,7 @@ export default function Customerlogin() {
                         {loading ? 'Logging in...' : 'Login'}
                     </button>
                 </form>
-                {message && <p className="message">{message}</p>}
+                <ToastContainer />
                 <p className="redirect-message">
                     Dont have an account? <Link to="/customersignup">Sign up here</Link>
                 </p>

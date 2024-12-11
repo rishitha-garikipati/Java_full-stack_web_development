@@ -1,10 +1,9 @@
-import Customernavbar from './Customernavbar';
-import './Customersupport.css';
+import Artisannavbar from './Artisannavbar'
 
-export default function Customersupport() {
+export default function Artisansupport() {
   return (
     <div className="support-container">
-      <Customernavbar/>
+        <Artisannavbar/>
     <iframe 
       src="https://forms.visme.co/formsPlayer/mx0q16p3-client-contact-form"
       className="support-form"

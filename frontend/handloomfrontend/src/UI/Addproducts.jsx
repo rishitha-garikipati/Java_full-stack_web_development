@@ -2,6 +2,8 @@ import  { useState } from 'react';
 import axios from 'axios';
 import './Addproducts.css';
 import Artisannavbar from './Artisannavbar';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Addproducts() {
   const [product, setProduct] = useState({
@@ -21,10 +23,10 @@ export default function Addproducts() {
     e.preventDefault();
     try {
       const response = await axios.post('http://localhost:7723/product/add', product);
-      alert(response.data); // Success message from backend
+      toast.success(response.data); // Success notification
       setProduct({ name: '', cost: '', rating: '', features: '', imageUrl: '' }); // Reset form
     } catch (error) {
-      alert('Error adding product: ' + error.message);
+      toast.error('Error adding product: ' + error.message); // Error notification
     }
   };
 
@@ -86,6 +88,7 @@ export default function Addproducts() {
           </form>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }
