@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.klef.jfsd.springboot.model.Admin;
-import com.klef.jfsd.springboot.model.Artisan;
 import com.klef.jfsd.springboot.service.AdminService;
 
 
